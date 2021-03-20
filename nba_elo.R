@@ -47,9 +47,9 @@ ggplot(brk_df, mapping = aes(date, elo_post)) +
   geom_hline(yintercept = 1500, linetype = "dotted") +
   geom_hline(yintercept = 1600, linetype = "dotted") +
   geom_hline(yintercept = 1700, linetype = "dotted") +
-  geom_text(aes(x=as.Date("2020-12-28"),y=1490, label = "Average rating")) +
-  geom_text(aes(x=as.Date("2020-12-28"),y=1610, label = "Playoff bound")) +
-  geom_text(aes(x=as.Date("2020-12-28"),y=1710, label = "Title contender")) +
+  geom_text(aes(x=as.Date("2020-12-30"),y=1490, label = "Average rating")) +
+  geom_text(aes(x=as.Date("2020-12-30"),y=1610, label = "Playoff bound")) +
+  geom_text(aes(x=as.Date("2020-12-30"),y=1710, label = "Title contender")) +
   geom_text(aes(x=as.Date("2021-01-21"),y=1750, label = "James Harden trade", color = "red")) +
   ggtitle("Brooklyn Nets") +
   ylab("ELO postgame") +
@@ -88,9 +88,9 @@ ggplot(lal_df, mapping = aes(date, elo_post)) +
   geom_hline(yintercept = 1500, linetype = "dotted") +
   geom_hline(yintercept = 1600, linetype = "dotted") +
   geom_hline(yintercept = 1700, linetype = "dotted") +
-  geom_text(aes(x=as.Date("2020-12-28"),y=1490, label = "Average rating")) +
-  geom_text(aes(x=as.Date("2020-12-28"),y=1610, label = "Playoff bound")) +
-  geom_text(aes(x=as.Date("2020-12-28"),y=1710, label = "Title contender")) +
+  geom_text(aes(x=as.Date("2020-12-30"),y=1490, label = "Average rating")) +
+  geom_text(aes(x=as.Date("2020-12-30"),y=1610, label = "Playoff bound")) +
+  geom_text(aes(x=as.Date("2020-12-30"),y=1710, label = "Title contender")) +
   ggtitle("Los Angeles Lakers") +
   ylim(1490,1750) +
   ylab("ELO postgame") +
