@@ -1,4 +1,4 @@
-## load package
+## load packages
 library(tidyverse)
 library(ggpubr)
 library(lubridate)
@@ -10,6 +10,7 @@ tail(df, n = 30)
 
 glimpse(df)
 
+# Isolate Brooklyn Nets data
 brk_df <-
   df %>% 
   filter((team1 == "BRK" | team2 == "BRK") & date <= today()) %>%
@@ -18,6 +19,7 @@ brk_df <-
          elo_diff = if_else(team1 == "BRK", (elo1_post - elo1_pre),
                             if_else(team2 == "BRK", (elo2_post - elo2_pre), NA_real_)))
 
+# Plot change in ELO after each game of the 2020-2021 season
 brk_elo_diff <-
   ggplot(brk_df, mapping = aes(date, elo_diff)) +
   geom_segment(aes(xend=date), yend=0) +
@@ -33,6 +35,7 @@ brk_elo_diff <-
   ylab("ELO postgame - ELO pregame") +
   xlab("Date in 2020-2021 NBA season")
 
+# Plot raw ELO values
 brk_elo_raw <-
 ggplot(brk_df, mapping = aes(date, elo_post)) +
   geom_line() +
@@ -53,6 +56,7 @@ ggplot(brk_df, mapping = aes(date, elo_post)) +
   xlab("Date in 2020-2021 NBA season") +
   ylim(1490,1750)
 
+# Isolate LA Lakers games
 lal_df <-
   df %>% 
   filter((team1 == "LAL" | team2 == "LAL") & date <= today()) %>%
@@ -61,6 +65,7 @@ lal_df <-
          elo_diff = if_else(team1 == "LAL", (elo1_post - elo1_pre),
                             if_else(team2 == "LAL", (elo2_post - elo2_pre), NA_real_)))
 
+# Plot change in ELO after each game of the 2020-2021 season
 lal_elo_diff <-
 ggplot(lal_df, mapping = aes(date, elo_diff)) +
   geom_segment(aes(xend=date), yend=0, color = '#552583') +
@@ -73,6 +78,7 @@ ggplot(lal_df, mapping = aes(date, elo_diff)) +
   xlab("Date in 2020-2021 NBA season") +
   ylim(-50, 50)
 
+# Plot raw ELO values
 lal_elo_raw <-
 ggplot(lal_df, mapping = aes(date, elo_post)) +
   geom_line(color = '#552583') +
@@ -90,6 +96,7 @@ ggplot(lal_df, mapping = aes(date, elo_post)) +
   ylab("ELO postgame") +
   xlab("Date in 2020-2021 NBA season")
 
+# Arrange into figure
 fig_1 <- ggpubr::ggarrange(brk_elo_raw, lal_elo_raw, brk_elo_diff, lal_elo_diff,
                            ncol = 2, nrow = 2, align = "hv",
                            labels = c("A", "B", "C", "D"),
